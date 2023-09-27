@@ -3,7 +3,13 @@
 
 by Sherry Li
 
+<img src="screenshot.png" width="60%">
+
+[Live Demo Link](https://sherryli02.github.io/hw01-fireball/)
+
 My goal was to create stylized fire. The first step I took was to gather reference images to guide my art direction. I noticed that in most images, the fire was made of hard edges and crisp opaque shapes, but also had soft glows.
+
+<img src="refs.png" width="60%">
 
 In my vertex shader, I stretched the sphere as a factor of position.y to achieve a teardrop shape. I then used simple sinusoidal functions to apply low-frequency high-amplitude noise and FBM based on Perlin noise to apply high-frequency low-amplitude noise. I added more noise that takes in position.y value and applies to the position.x value to simulate wind blowing the flame. All noise displacements are animated through sinusoidal functions based on time.
 
