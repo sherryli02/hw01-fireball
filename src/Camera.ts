@@ -16,10 +16,16 @@ class Camera {
 
   constructor(position: vec3, target: vec3) {
     this.controls = CameraControls(document.getElementById('canvas'), {
+      
+
       eye: position,
       center: target,
     });
+
+    this.controls.eye.z = 10.;
+
     vec3.add(this.target, this.position, this.direction);
+    
     mat4.lookAt(this.viewMatrix, this.controls.eye, this.controls.center, this.controls.up);
   }
 
@@ -33,6 +39,9 @@ class Camera {
 
   update() {
     this.controls.tick();
+
+    this.controls.eye.z = 10.;
+
     vec3.add(this.target, this.position, this.direction);
     mat4.lookAt(this.viewMatrix, this.controls.eye, this.controls.center, this.controls.up);
   }
