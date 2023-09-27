@@ -1,4 +1,23 @@
 # [Project 1: Noise](https://github.com/CIS-566-Fall-2022/hw01-fireball-base)
+## Description
+
+by Sherry Li
+
+My goal was to create stylized fire. The first step I took was to gather reference images to guide my art direction. I noticed that in most images, the fire was made of hard edges and crisp opaque shapes, but also had soft glows.
+
+In my vertex shader, I stretched the sphere as a factor of position.y to achieve a teardrop shape. I then used simple sinusoidal functions to apply low-frequency high-amplitude noise and FBM based on Perlin noise to apply high-frequency low-amplitude noise. I added more noise that takes in position.y value and applies to the position.x value to simulate wind blowing the flame. All noise displacements are animated through sinusoidal functions based on time.
+
+In my fragment shader, I used Perlin noise with a threshold to generate a pattern of round shapes that subtract from the fire silhouette. Time was used to animate its position to be constantly moving upwards, and I passed in position to the fragment shader to use it as a factor where the higher the pattern, the lower the threshold to subtract.
+
+Across both shaders, the toolbox functions I used were mix, sin, bias, and smoothstep.
+
+I used a similar series of thresholds to create the bands of colors of the flame’s core. In order to have the core of the fire be present no matter how you rotate the fire, I incorporated the world coordinates (modelposition) to calculate the distance a point was away from world origin. 
+
+I knew that I wanted to achieve a bloom-like effect, but implementing a post-process shader was out of my scope. Using mix functions gave me an effect I was happy with: in conjunction with the world-space coordinates, I was able to use the outmost “band” to create the illusion of an overall glow.
+
+Since the fire isn’t actually transparent and has a solid black portion, the final product is a little hacky. But if it was composited with an overlay or screen filter I think it would work alright!
+
+
 
 ## Objective
 
